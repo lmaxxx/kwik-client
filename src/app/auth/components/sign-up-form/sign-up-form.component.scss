@@ -1,0 +1,5 @@
+@use "primeflex/primeflex";
+
+:host {
+  @include primeflex.styleclass('max-w-22rem w-11');
+}

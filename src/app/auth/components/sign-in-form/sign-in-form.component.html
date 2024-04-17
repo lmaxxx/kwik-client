@@ -1,0 +1,24 @@
+<p-card>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h1 class="mt-2 mb-2" >Sign in</h1>
+    <p class="mt-0 mb-4" >Your journey starts here - enter your credentials and let's explore together!</p>
+    <span class="p-input-icon-right mt-2 w-full">
+        <input formControlName="email" aria-describedby="email-error" class="w-full p-inputtext-sm" pInputText placeholder="Email"/>
+        <i class="pi pi-at"></i>
+    </span>
+    @if(form.controls.email.invalid && form.controls.email.touched) {
+      <small class="text-red-600" id="email-error">Email is invalid</small>
+    }
+    <span class="p-input-icon-left mt-2 w-full">
+        <i class="pi pi-lock"></i>
+        <p-password formControlName="password" aria-describedby="password-error" [feedback]="false" class="p-inputtext-sm" placeholder="Password" [inputStyle]="{'width': '100%'}" [style]="{'width': '100%'}"
+                    [toggleMask]="true" id="password"></p-password>
+      </span>
+    @if(form.controls.password.invalid && form.controls.password.touched) {
+      <small class="text-red-600" id="password-error">Password should be at least 8 characters</small>
+    }
+    <p-button [disabled]="form.invalid" type="submit" size="small" severity="success" styleClass="w-full mt-4" label="Submit"></p-button>
+    <small routerLink="../sign-up" class="block cursor-pointer underline mt-2 mb-0 text-center text-sm" >I don't have an account</small>
+  </form>
+</p-card>
+

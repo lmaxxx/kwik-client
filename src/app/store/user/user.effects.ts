@@ -1,6 +1,6 @@
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {AuthActions} from "./user.actions";
-import {catchError, EMPTY, exhaustMap, map, of, switchMap, tap} from "rxjs";
+import {catchError, exhaustMap, map, of, tap} from "rxjs";
 import {AuthService} from "../../auth/auth.service";
 import {Injectable} from "@angular/core";
 import {MessageService} from "primeng/api";
@@ -44,13 +44,9 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(AuthActions.authError),
       tap(({errorResponse}) => {
-        if(Array.isArray(errorResponse.error.message)) {
-          errorResponse.error.message.forEach((errorMessage: string) =>
-            this.messageService.add({severity: "error", summary: "Authorization error", detail: errorMessage})
-          )
-        } else {
-          this.messageService.add({severity: "error", summary: "Authorization error", detail: errorResponse.error.message})
-        }
+        errorResponse.error.message.forEach((errorMessage: string) =>
+          this.messageService.add({severity: "error", summary: "Authorization error", detail: errorMessage})
+        )
       })
     ), {dispatch: false}
   )

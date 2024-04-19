@@ -5,6 +5,7 @@ import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {PasswordModule} from "primeng/password";
+import {ThemeService} from "../../../shared/services/theme.service";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -21,5 +22,12 @@ import {PasswordModule} from "primeng/password";
   styleUrl: './sign-up-page.component.scss'
 })
 export class SignUpPageComponent {
+  constructor(
+    private themeService: ThemeService
+  ) {
+  }
 
+  switch() {
+    this.themeService.toggle()
+  }
 }

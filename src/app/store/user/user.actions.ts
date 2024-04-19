@@ -15,3 +15,10 @@ export const AuthActions = createActionGroup({
     'refresh': props<{ email: string; password: string }>(),
   }
 })
+
+export const UserActions = createActionGroup({
+  source: "User",
+  events: {
+    "toggleTheme": emptyProps()
+  }
+})

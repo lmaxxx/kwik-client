@@ -1,5 +1,5 @@
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AuthActions} from "./user.actions";
+import {AuthActions, UserActions} from "./user.actions";
 import {catchError, exhaustMap, map, of, tap} from "rxjs";
 import {AuthService} from "../../auth/auth.service";
 import {Injectable} from "@angular/core";
@@ -50,4 +50,11 @@ export class UserEffects {
       })
     ), {dispatch: false}
   )
+
+  // toggleTheme = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(UserActions.toggleTheme),
+  //
+  //   )
+  // )
 }
